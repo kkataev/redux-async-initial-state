@@ -49,7 +49,7 @@ After
 
 import { createStore, applyMiddleware } from 'redux';
 import * as reducers from 'reducers';
-import { * as asyncInitialState } from 'redux-async-initial-state';
+import * as asyncInitialState from 'redux-async-initial-state';
 
 // We need outerReducer to replace full state as soon as it loaded
 const reducer = asyncInitialState.outerReducer(combineReducers({
