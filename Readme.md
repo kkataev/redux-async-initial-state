@@ -73,6 +73,26 @@ const storeCreator = applyMiddleware(asyncInitialState.middleware(loadStore));
 const store = storeCreator(reducer);
 ```
 
+### Partial replace
+In case when you're loading only part of your store initially, you can add `currentState` argument in `loadStore` function. So, if you have some complex shape of your reducer and you need to replace only some of keys in your store (`currentUser` in example below):
+
+```js
+const loadStore = (currentState) => {
+  return new Promise(resolve => {
+    fetch('/current_user.json')
+      .then(response => response.json())
+      .then(user => {
+        resolve({
+          // reuse state that was before loading current user
+          ...currentState,
+          // and replace only `currentUser` key
+          currentUser: user
+        })
+      });
+  });
+}
+```
+
 ## Reducer
 The shape of `innerReducer` is:
 
