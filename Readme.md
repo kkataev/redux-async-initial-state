@@ -69,8 +69,10 @@ const loadStore = () => {
   });
 }
 
-const storeCreator = applyMiddleware(asyncInitialState.middleware(loadStore));
-const store = storeCreator(reducer);
+const store = createStore(
+  reducer,
+  compose(applyMiddleware(asyncInitialState.middleware(loadStore)))
+);
 ```
 
 ### Partial replace
