@@ -7,7 +7,7 @@ Redux [middleware](http://redux.js.org/docs/advanced/Middleware.html) for async 
 [![npm version](https://img.shields.io/npm/v/redux-async-initial-state.svg?style=flat-square)](https://www.npmjs.com/package/redux-async-initial-state)
 
 
-```javascript
+```bash
 npm install --save redux-async-initial-state
 ```
 
@@ -27,7 +27,7 @@ But it becomes quite complicated to do it asynchronously, i.e. from server or fr
 
 1. Add package
 
-```javascript
+```bash
 npm install --save redux-async-initial-state
 ```
 
@@ -36,7 +36,7 @@ npm install --save redux-async-initial-state
 before:
 
 ```javascript
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import * as reducers from 'reducers'
 
 const reducer = combineReducers(reducers)
@@ -47,7 +47,7 @@ After
 
 ```javascript
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import * as reducers from 'reducers';
 import * as asyncInitialState from 'redux-async-initial-state';
 
@@ -109,6 +109,7 @@ The shape of `innerReducer` is:
 You can add it to you reducer if you want to handle loading state, i.e. to show loading spinner. Here is React example (it uses reducer, described above):
 
 ```javascript
+import React from 'react';
 import { connect } from 'react-redux';
 
 @connect(state => ({
