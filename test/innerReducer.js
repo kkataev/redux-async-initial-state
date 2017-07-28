@@ -6,7 +6,7 @@ describe('innerReducer', () => {
     const state = innerReducer(undefined, {});
     assert.strictEqual(state.loaded, false);
     assert.strictEqual(state.loading, false);
-    assert.strictEqual(state.error, false);
+    assert.strictEqual(state.error, null);
   });
 
   it('changes loading on start action', () => {
@@ -15,16 +15,17 @@ describe('innerReducer', () => {
     });
     assert.strictEqual(state.loaded, false);
     assert.strictEqual(state.loading, true);
-    assert.strictEqual(state.error, false);
+    assert.strictEqual(state.error, null);
   });
 
   it('changes error on error action', () => {
     const state = innerReducer(undefined, {
       type: STATE_LOADING_FAILED,
+      payload: { error: new Error('err') },
     });
     assert.strictEqual(state.loaded, false);
     assert.strictEqual(state.loading, false);
-    assert.strictEqual(state.error, true);
+    assert.strictEqual(state.error.message, 'err');
   });
 
   it('changes loaded on done action', () => {
@@ -34,6 +35,6 @@ describe('innerReducer', () => {
     });
     assert.strictEqual(state.loaded, true);
     assert.strictEqual(state.loading, false);
-    assert.strictEqual(state.error, false);
+    assert.strictEqual(state.error, null);
   });
 });
