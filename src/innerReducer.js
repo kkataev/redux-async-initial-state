@@ -3,7 +3,7 @@ import * as actions from './actionTypes';
 const initialState = {
   loading: false,
   loaded: false,
-  error: false,
+  error: null,
 };
 
 export default function innerReducer(state = initialState, action) {
@@ -11,19 +11,19 @@ export default function innerReducer(state = initialState, action) {
     case actions.STATE_LOADING_START:
       return {
         loaded: false,
-        error: false,
+        error: null,
         loading: true,
       };
     case actions.STATE_LOADING_DONE:
       return {
         loaded: true,
-        error: false,
+        error: null,
         loading: false,
       };
     case actions.STATE_LOADING_FAILED:
       return {
         loaded: false,
-        error: true,
+        error: action.payload.error,
         loading: false,
       };
     default:
