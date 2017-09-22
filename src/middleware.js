@@ -1,10 +1,10 @@
-import { STATE_LOADING_START, STATE_LOADING_DONE, STATE_LOADING_FAILED } from './actionTypes';
+import { STATE_LOADING_DONE, STATE_LOADING_FAILED, STATE_LOADING_START } from './actionTypes';
 
 export default load => store => {
   store.dispatch({
     type: STATE_LOADING_START,
   });
-  load(store.getState, store.getState()).then(
+  load(store.getState(), store.getState).then(
     state => {
       store.dispatch({
         type: STATE_LOADING_DONE,
