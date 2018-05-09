@@ -2,9 +2,16 @@ language: node_js
 sudo: false
 cache:
   directories:
-    - node_modules
+  - node_modules
 node_js:
-  - "4"
-  - "5"
+- '4'
+- '5'
 before_install:
-  - npm install -g babel-cli
+- npm install -g babel-cli
+deploy:
+  provider: npm
+  email: kelionweb@gmail.com
+  on:
+    tags: true
+  api_key:
+    secure: KOCHmWrQDiJkJ83ZF379csJdCPfpdCcS7HB3rGqVmPSwO2V1VbRGB0uyFvMBSJv7dk3zgZclLcvCVTm5PT1iFKCwzCAzfjkQ2CDgawR4/f/Tx3vNGVAxXYPk/LXSusV/go9fPLOLc0za6raSqJEtznLnKa4KWm1hdm1jjAOdrXyfKCOnTZZsRyVrKM87ZXNhJvwttZaK+SlJr/TURoU/LrJPweYQP1XywP56uNQc8racwl1ute6XtuQ3RFw7959N/16w1OGkekA9YB7z6dZFpUXIwc4iihVL5knQrH63XFxNpIajha2cZap7tzFu39Wg8+sRch1vDRAGf8TiatQei2UokN41lt86ojZks9ikscQ61Wz9d29mv+4yzKKpzuDPWC2nNOWcVSjlWqaQJ9WYLTWP2oo3gmwSzL0QOLBEhhUMFUrGInXVkabimG3Z0eyC/wHDwLfnxo8PVD1wWXghvvMPODDj85hd3+xT6Yd4NTYGxNOId13gJasIhc/o58pFvxsdg3woHOzoUJW0CnJsneDyqR/GcCJuEJjiDc6lYkIdN/pqPgKv34p3h0eFht8aKEA8MB2L5J9gxYksWHL5jEqsl72spDZa4EA6qCoOdt64t7FgSv6HwzQLAESAI2R1Oo2NgSLm8buiPNId26klgVF4v9ty29+7CSjfGDESXYo=
