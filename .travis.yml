@@ -4,8 +4,9 @@ cache:
   directories:
   - node_modules
 node_js:
-- '4'
-- '5'
+- '8'
+- '9'
+- '10'
 before_install:
 - npm install -g babel-cli
 deploy:
