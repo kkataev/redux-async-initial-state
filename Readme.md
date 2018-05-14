@@ -76,17 +76,17 @@ const store = createStore(
 ```
 
 ### Partial replace
-In case when you're loading only part of your store initially, you can add `currentState` argument in `loadStore` function. So, if you have some complex shape of your reducer and you need to replace only some of keys in your store (`currentUser` in example below):
+In case when you're loading only part of your store initially, you can add `getCurrentState` argument in `loadStore` function. So, if you have some complex shape of your reducer and you need to replace only some of keys in your store (`currentUser` in example below):
 
 ```js
-const loadStore = (currentState) => {
+const loadStore = (getCurrentState) => {
   return new Promise(resolve => {
     fetch('/current_user.json')
       .then(response => response.json())
       .then(user => {
         resolve({
           // reuse state that was before loading current user
-          ...currentState,
+          ...getCurrentState(),
           // and replace only `currentUser` key
           currentUser: user
         })
