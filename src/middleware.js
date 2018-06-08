@@ -17,7 +17,7 @@ const middleware = load => store => {
       type: STATE_LOADING_START,
     });
 
-    load(getState).then(
+    load(getState, dispatch).then(
       state => {
         dispatch({
           type: STATE_LOADING_DONE,
