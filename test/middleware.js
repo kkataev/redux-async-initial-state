@@ -9,10 +9,16 @@ describe('middleware', () => {
 
   it('dispatches start action immediately', () => {
     const load = () => Promise.resolve({});
-    middleware(load)(store);
+
+    expect(middleware.isLoadExecuted).to.be.equal(undefined);
+
+    middleware(load)(store)(dispatch)();
+
     expect(dispatch).to.have.been.called.with({
       type: STATE_LOADING_START,
     });
+
+    expect(middleware.isLoadExecuted).to.be.equal(true);
   });
 
   it('dispatches failed action when promise rejected', () => {
